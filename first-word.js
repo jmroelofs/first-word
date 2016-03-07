@@ -33,8 +33,7 @@
           textNode.nodeValue= ' ' + words.join(' ');
           var newNode= document.createElement('span');
           newNode.appendChild(document.createTextNode(firstWord));
-          this.insertBefore(newNode, textNode);
-          $.merge(result, $(newNode));
+          $.merge(result, $(this.insertBefore(newNode, textNode)));
         }
       }
 
