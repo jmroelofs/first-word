@@ -24,7 +24,7 @@
       var textNode = this.firstChild;
 
       if (textNode && textNode.nodeType == 3) {
-        var words= textNode.nodeValue.split(" ");
+        var words= textNode.nodeValue.split(' ');
         if (words[0]) {
           var firstWord= words.shift();
           if (words[0] && ($.inArray(firstWord.toLowerCase(), settings.skipWords) > -1)) {
