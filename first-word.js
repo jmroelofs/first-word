@@ -11,6 +11,7 @@
 */
 
 (function ($) {
+  'use strict';
 
   $.fn.firstWord = function(options) {
 
