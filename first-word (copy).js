@@ -1,27 +1,27 @@
 /*
 
-    Script:     first word
-    Version:    1.3, jQuery plugin version
-    Authors:    Jan Martin Roelofs (www.roelofs-coaching.nl)
-    Desc:       Marks and selects the first word
-    Licence:    This work is licensed under the Creative Commons Attribution 4.0 International License.
-                To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/
-                or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+    Script:   first word
+    Version:  1.3, jQuery plugin version
+    Authors:  Jan Martin Roelofs (www.roelofs-coaching.nl)
+    Desc:     Marks and selects the first word
+    Licence:  This work is licensed under the Creative Commons Attribution 4.0 International License.
+              To view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/
+              or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
 
 */
 
 (function ($) {
     'use strict';
-
+  
     $.fn.firstWord = function(options) {
-
+  
         var settings = $.extend( {}, $.fn.firstWord.defaults, options ),
             result   = $();
-
+    
         this.each(function(){
-
+    
             var textNode = this.firstChild;
-
+      
             if (textNode && textNode.nodeType == 3) {
                 var words= textNode.nodeValue.split(' ');
                 if (words[0]) {
@@ -35,7 +35,7 @@
                     $.merge(result, $(this.insertBefore(newNode, textNode)));
                 }
             }
-
+    
         });
         return result;
     }
@@ -43,5 +43,5 @@
     $.fn.firstWord.defaults = {
         skipWords: ['het','een','de','van','op','ter','ten','te','in','of','off','a','the','der'],
     };
-
+    
 })(jQuery);
