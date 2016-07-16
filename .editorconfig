@@ -8,7 +8,7 @@ root = true
 charset = utf-8
 end_of_line = lf
 
-# 2 space indentation
+# 4 space indentation
 [*.{js,css,scss.php}]
 indent_size = 4
 indent_style = space
