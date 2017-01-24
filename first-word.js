@@ -1,7 +1,7 @@
 /*
 
     Script:     first word
-    Version:    1.3, jQuery plugin version
+    Version:    1.4, jQuery plugin version
     Authors:    Jan Martin Roelofs (www.roelofs-coaching.nl)
     Desc:       Marks and selects the first word
     Licence:    This work is licensed under the Creative Commons Attribution 4.0 International License.
@@ -15,33 +15,31 @@
 
     $.fn.firstWord = function(options) {
 
-        var settings = $.extend( {}, $.fn.firstWord.defaults, options ),
-            result   = $();
+        var settings = $.extend( {}, $.fn.firstWord.defaults, options );
 
-        this.each(function(){
+        return this.map(function(){
 
             var textNode = this.firstChild;
 
             if (textNode && textNode.nodeType == 3) {
                 var words= textNode.nodeValue.split(' ');
                 if (words[0]) {
-                    var firstWord= words.shift();
-                    if (words[0] && ($.inArray(firstWord.toLowerCase(), settings.skipWords) > -1)) {
-                        firstWord += ' ' + words.shift();
-                    }
+                    var firstWords= [words.shift()];
+                    while (words[0] && ($.inArray(firstWords[firstWords.length-1].toLowerCase(), settings.skipWords) > -1))
+                        firstWords.push(words.shift());
                     textNode.nodeValue= ' ' + words.join(' ');
                     var newNode= document.createElement('span');
-                    newNode.appendChild(document.createTextNode(firstWord));
-                    $.merge(result, $(this.insertBefore(newNode, textNode)));
+                    newNode.appendChild(document.createTextNode(firstWords.join(' ')));
+                    return this.insertBefore(newNode, textNode);
                 }
             }
 
         });
-        return result;
     }
 
     $.fn.firstWord.defaults = {
-        skipWords: ['het','een','de','van','op','ter','ten','te','in','of','off','a','the','der'],
+        skipWords: ['een','de','der','het','in','of','op','te','ten','ter','van',
+                    'a','the','off'],
     };
 
 })(jQuery);
