@@ -35,7 +35,6 @@
                     return this.insertBefore(newNode, textNode);
                 }
             }
-
         });
     }
 
