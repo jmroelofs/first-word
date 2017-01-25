@@ -22,15 +22,15 @@
             var textNode = this.firstChild;
 
             if (textNode && textNode.nodeType == 3) {
-                var words= textNode.nodeValue.split(' ');
+                var words = textNode.nodeValue.split(' ');
                 if (words[0]) {
 
-                    var firstWords= [words.shift()];
+                    var firstWords = [words.shift()];
                     while (words[0] && ($.inArray(firstWords[firstWords.length-1].toLowerCase(), settings.skipWords) > -1))
                         firstWords.push(words.shift());
 
-                    textNode.nodeValue= ' ' + words.join(' ');
-                    var newNode= document.createElement('span');
+                    textNode.nodeValue = ' ' + words.join(' ');
+                    var newNode = document.createElement('span');
                     newNode.appendChild(document.createTextNode(firstWords.join(' ')));
                     return this.insertBefore(newNode, textNode);
                 }
