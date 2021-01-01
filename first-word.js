@@ -1,7 +1,7 @@
 /*
 
     Script:     first word
-    Version:    1.4, jQuery plugin version
+    Version:    1.5, jQuery plugin version
     Authors:    Jan Martin Roelofs (www.roelofs-coaching.nl)
     Desc:       Marks and selects the first word
     Licence:    This work is licensed under the Creative Commons Attribution 4.0 International License.
@@ -26,7 +26,7 @@
                 if (words[0]) {
 
                     var firstWords = [words.shift()];
-                    while (words[0] && ($.inArray(firstWords[firstWords.length-1].toLowerCase(), settings.skipWords) > -1))
+                    while (words[0] && settings.skipWords.indexOf(firstWords[firstWords.length-1].toLowerCase()) > -1)
                         firstWords.push(words.shift());
 
                     textNode.nodeValue = ' ' + words.join(' ');
