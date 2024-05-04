@@ -23,10 +23,10 @@
 
             if (textNode && textNode.nodeType == 3) {
                 const words = textNode.nodeValue.split(' ');
-                if (words[0]) {
+                if (words.length) {
 
                     const firstWords = [words.shift()];
-                    while (words[0] && settings.skipWords.indexOf(firstWords[firstWords.length-1].toLowerCase()) > -1)
+                    while (words.length && settings.skipWords.indexOf(firstWords[firstWords.length-1].toLowerCase()) > -1)
                         firstWords.push(words.shift());
 
                     textNode.nodeValue = ' ' + words.join(' ');
