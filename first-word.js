@@ -1,7 +1,7 @@
 /*
 
     Script:     first word
-    Version:    1.5, jQuery plugin version
+    Version:    1.6, jQuery plugin version
     Authors:    Jan Martin Roelofs (www.roelofs-coaching.nl)
     Desc:       Marks and selects the first word
     Licence:    This work is licensed under the Creative Commons Attribution 4.0 International License.
@@ -15,22 +15,22 @@
 
     $.fn.firstWord = function(options) {
 
-        var settings = $.extend( {}, $.fn.firstWord.defaults, options );
+        const settings = $.extend( {}, $.fn.firstWord.defaults, options );
 
         return this.map(function(){
 
-            var textNode = this.firstChild;
+            const textNode = this.firstChild;
 
             if (textNode && textNode.nodeType == 3) {
-                var words = textNode.nodeValue.split(' ');
+                const words = textNode.nodeValue.split(' ');
                 if (words[0]) {
 
-                    var firstWords = [words.shift()];
+                    const firstWords = [words.shift()];
                     while (words[0] && settings.skipWords.indexOf(firstWords[firstWords.length-1].toLowerCase()) > -1)
                         firstWords.push(words.shift());
 
                     textNode.nodeValue = ' ' + words.join(' ');
-                    var newNode = document.createElement('span');
+                    const newNode = document.createElement('span');
                     newNode.appendChild(document.createTextNode(firstWords.join(' ')));
                     return this.insertBefore(newNode, textNode);
                 }
