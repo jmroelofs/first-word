@@ -17,7 +17,7 @@
 
         const settings = $.extend( {}, $.fn.firstWord.defaults, options );
 
-        return this.map(function(){
+        return this.map(function() {
 
             const textNode = this.firstChild;
 
